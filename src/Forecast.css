@@ -1,0 +1,11 @@
+.card-day {
+  text-align: center;
+  font-weight: bolder;
+}
+.card-temperature {
+  text-align: center;
+}
+.card {
+  border: 2px solid #f4d8e3;
+  border-radius: 20px;
+}
