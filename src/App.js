@@ -9,10 +9,10 @@ export default function App() {
       <div className="container">
       <Weather defaultCity="Lisbon"/>
       <Forecast />
-      <Form />
+      <Form data={Form} />
       <footer>
         This project was coded by Joana Vicente and is {" "}
-      <a href="https://github.com/joanavicent/weather-react" target="_blank">Open-sourced on GitHub </a>
+      <a href="https://github.com/joanavicent/weather-react" target="_blank" rel="noreferrer">Open-sourced on GitHub </a>
       </footer>
     </div>
     </div>
