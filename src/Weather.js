@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import "./Weather.css";
 import axios from "axios";
 
@@ -12,7 +13,7 @@ function handleResponse(response){
     humidity:response.data.main.humidity,
     wind: response.data.wind.speed,
     city: response.data.name,
-    date: "Monday, 16:37",
+    date: new Date (response.data.dt *1000),
     description:response.data.weather[0].description,
     iconUrl:"http://openweathermap.org/img/wn/01d@2x.png"
   });
@@ -39,19 +40,21 @@ return (
                 </a>
               </span>
               <div className="col-sm">
-                <p className="date" id="date">
-                  {weatherData.date}
-                </p>
+                <ul>
+                  <li className="date" id="date">
+                    <FormattedDate date={weatherData.date} />
+                  </li>
+              </ul>
                 <br />
                 <div className="col d-flex align-items-end">
                   <ul>
                     <li>
                       <strong>Humidity:</strong> <span id="humidity">{weatherData.humidity}</span>%{" "}
-                      <i class="fas fa-tint"></i>
+                      <i className="fas fa-tint"></i>
                     </li>
                     <li>
                       <strong>Wind speed:</strong> <span id="wind">{weatherData.wind}</span>{" "}
-                      km/h <i class="fas fa-wind"></i>
+                      km/h <i className="fas fa-wind"></i>
                     </li>
                   </ul>
                 </div>
