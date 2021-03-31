@@ -15,7 +15,7 @@ function handleResponse(response){
     city: response.data.name,
     date: new Date (response.data.dt *1000),
     description:response.data.weather[0].description,
-    iconUrl:"https://openweathermap.org/img/wn/01d@2x.png"
+    iconUrl:`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   });
  
 }
@@ -25,7 +25,7 @@ return (
         <div className="Weather">
             <div className="row">
           <div className="col-sm-6">
-            <h1 id="city"></h1>
+            <h1 id="city">{props.defaultCity}</h1>
             <h2>
               <span className="temperature" id="temperature">
                 {Math.round(weatherData.temperature)}
@@ -53,7 +53,7 @@ return (
                       <i className="fas fa-tint"></i>
                     </li>
                     <li>
-                      <strong>Wind speed:</strong> <span id="wind">{weatherData.wind}</span>{" "}
+                      <strong>Wind speed:</strong> <span id="wind">{Math.round(weatherData.wind)}</span>{" "}
                       km/h <i className="fas fa-wind"></i>
                     </li>
                   </ul>
