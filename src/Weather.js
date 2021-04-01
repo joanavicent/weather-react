@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 import axios from "axios";
 
@@ -37,58 +38,9 @@ function handleSubmit(event) {
 
 if (weatherData.ready){
 return (
-        <div className="Weather">
-            <div className="row">
-          <div className="col-sm-6">
-            <h1 id="city">{weatherData.city}</h1>
-            <h2>
-              <span className="temperature" id="temperature">
-                {Math.round(weatherData.temperature)}
-              </span>
-              <span className="units">
-                <a href="/" id="celsius-link" className="active">
-                  °C
-                </a>
-                |
-                <a href="/" id="fahrenheit-link">
-                  °F
-                </a>
-              </span>
-              <div className="col-sm">
-                <ul>
-                  <li className="date" id="date">
-                    <FormattedDate date={weatherData.date} />
-                  </li>
-              </ul>
-                <br />
-                <div className="col d-flex align-items-end">
-                  <ul>
-                    <li>
-                      <strong>Humidity:</strong> <span id="humidity">{weatherData.humidity}</span>%{" "}
-                      <i className="fas fa-tint"></i>
-                    </li>
-                    <li>
-                      <strong>Wind speed:</strong> <span id="wind">{Math.round(weatherData.wind)}</span>{" "}
-                      km/h <i className="fas fa-wind"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </h2>
-          </div>
-          <div className="col">
-            <img
-              src={weatherData.iconUrl}
-              alt={weatherData.description}
-              className="float"
-              id="weather-icon"
-            />
-            <div className="text-capitalize" id="description">
-             {weatherData.description}
-            </div>
-          </div>
-        </div>
+        
         <div>
+          <WeatherInfo data={weatherData} />
       <form onSubmit= {handleSubmit} id="city-search-form">
         <input 
         type="search" 
@@ -107,7 +59,7 @@ return (
         </button>
       </form>
     </div>
-        </div>
+        
     );
 }else{
 const apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";
