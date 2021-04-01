@@ -40,7 +40,7 @@ return (
         
         <div>
           <WeatherInfo data={weatherData} />
-      <form onSubmit= {handleSubmit} id="city-search-form">
+      <form onSubmit= {handleSubmit} >
         <input 
         type="search" 
         placeholder="Enter a city..." 
