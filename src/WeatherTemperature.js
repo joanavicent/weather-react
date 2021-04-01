@@ -21,7 +21,7 @@ if (unit === "celsius") {
         <span className="temperature"> {Math.round(props.celsius)}
         </span>
          <span className="unit">
-            °C | {" "}
+           {" "} °C | {" "}
             <a href="/" onClick={showFahrenheit} >
             °F
             </a>
