@@ -9,7 +9,8 @@ export default function App() {
       <div className="container">
       <Weather defaultCity="Lisbon"/>
       <Forecast />
-      <footer>
+      <hr />
+      <footer className="text-center">
         This project was coded by Joana Vicente and is {" "}
       <a href="https://github.com/joanavicent/weather-react" target="_blank" rel="noreferrer">Open-sourced on GitHub </a>
       </footer>
