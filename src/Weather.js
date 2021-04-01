@@ -5,8 +5,9 @@ import axios from "axios";
 
 export default function Weather(props){
   const [weatherData, setWeatherData]= useState ({ready:false});
+  const [city, setCity] = useState(props.defaultCity);
 
-function handleResponse(response){
+  function handleResponse(response){
   setWeatherData({
     ready:true,
     temperature: response.data.main.temp,
@@ -19,13 +20,27 @@ function handleResponse(response){
   });
  
 }
+function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "88bb6b7ed04faa186d338b9c9e0be6e6";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
 
 if (weatherData.ready){
 return (
         <div className="Weather">
             <div className="row">
           <div className="col-sm-6">
-            <h1 id="city">{props.defaultCity}</h1>
+            <h1 id="city">{weatherData.city}</h1>
             <h2>
               <span className="temperature" id="temperature">
                 {Math.round(weatherData.temperature)}
@@ -73,6 +88,25 @@ return (
             </div>
           </div>
         </div>
+        <div>
+      <form onSubmit= {handleSubmit} id="city-search-form">
+        <input 
+        type="search" 
+        placeholder="Enter a city..." 
+        id="city-input" 
+        autoFocus="on"
+        onChange={handleCityChange}
+        />
+        <input 
+        type="submit" 
+        value="🔎" 
+        className="btn btn-success" 
+        />
+        <button id="current-location-button">
+          <i className="fas fa-map-marker-alt"></i>
+        </button>
+      </form>
+    </div>
         </div>
     );
 }else{
