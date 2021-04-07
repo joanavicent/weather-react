@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import Forecast from "./Forecast";
 import "./Weather.css";
 import axios from "axios";
 
@@ -10,6 +11,7 @@ export default function Weather(props){
   function handleResponse(response){
   setWeatherData({
     ready:true,
+    coordinates:response.data.coord,
     temperature: response.data.main.temp,
     humidity:response.data.main.humidity,
     wind: response.data.wind.speed,
@@ -57,6 +59,7 @@ return (
           <i className="fas fa-map-marker-alt"></i>
         </button>
       </form>
+      <Forecast  coordinates={weatherData.coordinates} />
     </div>
         
     );

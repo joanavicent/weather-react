@@ -1,69 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Forecast.css";
-export default function Forecast() {
-  return (
-    <div className="row" id="forecast">
-      <div className="col-2">
-        <div className="card">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
-          <div className="card-body">
-            <p className="card-temperature">15°C</p>
-            <hr />
-            <p className="card-day">18:00</p>
-          </div>
-        </div>
-      </div>
+import WeatherForecastDay from "./WeatherForecastDay";
+import axios from "axios";
 
-      <div className="col-2">
-        <div className="card">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
-          <div className="card-body">
-            <p className="card-temperature">15°C</p>
-            <hr />
-            <p className="card-day">18:00</p>
-          </div>
-        </div>
-      </div>
-      <div className="col-2">
-        <div className="card">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
-          <div className="card-body">
-            <p className="card-temperature">15°C</p>
-            <hr />
-            <p className="card-day">18:00</p>
-          </div>
-        </div>
-      </div>
-      <div className="col-2">
-        <div className="card">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
-          <div className="card-body">
-            <p className="card-temperature">15°C</p>
-            <hr />
-            <p className="card-day">18:00</p>
-          </div>
-        </div>
-      </div>
-      <div className="col-2">
-        <div className="card">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
-          <div className="card-body">
-            <p className="card-temperature">15°C</p>
-            <hr />
-            <p className="card-day">18:00</p>
-          </div>
-        </div>
-      </div>
-      <div className="col-2">
-        <div className="card">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
-          <div className="card-body">
-            <p className="card-temperature">15°C</p>
-            <hr />
-            <p className="card-day">18:00</p>
-          </div>
-        </div>
-      </div>
+export default function Forecast(props) {
+  let [loaded, setLoaded]=useState(false);
+  let [forecast, setForecast]=useState(null);
+
+  useEffect (() => { 
+    setLoaded (false);
+  }, [props.coordinates]);
+
+function handleResponse(response){
+  setForecast(response.data.daily);
+  setLoaded (true);
+}
+
+function load() {
+let apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";
+let longitude= props.coordinates.lon;
+let latitude= props.coordinates.lat;
+let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+axios.get(apiUrl).then(handleResponse); 
+}
+
+if (loaded){
+  return (
+    <div className="Forecast">
+    <div className="row">
+      {forecast.map(function (dailyForecast, index) {
+        if (index < 6){
+          return(
+            <div className="col" key={index} >
+            <WeatherForecastDay data={dailyForecast} />
+            </div>
+          );
+        } else {
+          return null;
+        }
+        })}
+    </div>
     </div>
   );
+
+} else {
+ load();
+return null;
+}
 }

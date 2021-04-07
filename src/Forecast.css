@@ -1,11 +1,11 @@
-.card-day {
+.Forecast-day {
   text-align: center;
   font-weight: bolder;
 }
-.card-temperature {
+.Forecast-temperatures {
   text-align: center;
 }
-.card {
+.Forecast-icon {
   border: 2px solid #f4d8e3;
   border-radius: 20px;
 }
