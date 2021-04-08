@@ -9,9 +9,8 @@ export default function WeatherInfo(props){
         <div className="WeatherInfo">
         <div className="Weather">
             <div className="row">
-            
-          <div className="col-sm-6">
-              <div className="border border-light rounded">
+          <div className="col">
+              <div className="border rounded">
             <h1 id="city">{props.data.city}</h1>
             <h2>
                 <WeatherTemperature celsius={props.data.temperature} />
@@ -27,9 +26,9 @@ export default function WeatherInfo(props){
             </div>
           </div>
           <div className="col">
-              <div className="border border-light rounded">
-                <div className="float-left">
-                <WeatherIcon code={props.data.icon} />
+              <div className="border rounded" >
+                <div className="float">
+                <WeatherIcon code={props.data.icon} size={120} />
             </div>
             <div className="description text-capitalize text-center">
             

@@ -1,4 +1,7 @@
 import React from "react";
+import WeatherIcon from "./WeatherIcon";
+import "./WeatherForecastDay.css";
+
 
 
 export default function WeatherForecastDay (props){
@@ -23,7 +26,7 @@ function day(){
     return ( 
         <div>
     <div className="Forecast-icon">
-          <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="" />
+          <WeatherIcon code={props.data.weather[0].icon} size= {42} />
           <div className="Forecast-day">{day()}</div>
           <div className="Forecast-temperatures">
             <hr />

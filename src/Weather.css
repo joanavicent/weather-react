@@ -1,6 +1,12 @@
 .Weather canvas {
-    height:64 px;
-    width:64 px;
     margin-right:10px;
     display: inline-block;
+    text-align: center;
+}
+
+col {
+    background:transparent;
+    border-color:tomato;
+    color:turquoise;
+    transition: all 200ms ease-in-out;
 }

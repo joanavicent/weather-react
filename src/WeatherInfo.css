@@ -1,2 +1,11 @@
+.WeatherInfo .float {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.WeatherInfo .col {
+    padding:0;
+    text-align: center;
+}
 
 

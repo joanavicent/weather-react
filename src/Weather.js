@@ -39,10 +39,14 @@ function handleSubmit(event) {
 
 if (weatherData.ready){
 return (
-        
         <div>
           <WeatherInfo data={weatherData} />
-      <form onSubmit= {handleSubmit} >
+          <Forecast  coordinates={weatherData.coordinates} />
+      <hr />
+      <br />
+      <div className= "row">
+        <div className="col">
+      <form onSubmit= {handleSubmit}>
         <input 
         type="search" 
         placeholder="Enter a city..." 
@@ -50,18 +54,26 @@ return (
         autoFocus="on"
         onChange={handleCityChange}
         />
+</form>
+</div>
+<div className="col">
         <input 
         type="submit" 
-        value="🔎" 
-        className="btn btn-success" 
+        value="Search" 
+        className="rounded-pill btn-md" 
+        auto-complete="on"
         />
-        <button id="current-location-button">
-          <i className="fas fa-map-marker-alt"></i>
-        </button>
-      </form>
-      <Forecast  coordinates={weatherData.coordinates} />
-    </div>
-        
+</div>
+<div className="col">
+        <input 
+        type="button"
+        value="My location"
+        className="rounded-pill btn-md"
+        auto-complete="on"
+        />
+      </div>
+      </div>  
+     </div> 
     );
 }else{
 const apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";

@@ -7,12 +7,13 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
+        <div className="location-info">
       <Weather defaultCity="Lisbon"/>
-      
+      </div>
       <hr />
       <footer className="text-center">
-        This project was coded by Joana Vicente and is {" "}
-      <a href="https://github.com/joanavicent/weather-react" target="_blank" rel="noreferrer">Open-sourced on GitHub </a>
+        Weather App coded by Joana Vicente and is Open-sourced on {" "}
+      <a href="https://github.com/joanavicent/weather-react" target="_blank" rel="noreferrer"> GitHub </a>
       </footer>
     </div>
     </div>

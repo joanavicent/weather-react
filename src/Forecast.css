@@ -4,8 +4,10 @@
 }
 .Forecast-temperatures {
   text-align: center;
+  margin-bottom: 15px;
 }
 .Forecast-icon {
-  border: 2px solid #f4d8e3;
+  border: 2px solid #7E8A97;
   border-radius: 20px;
+  margin-top: 25px;
 }
