@@ -22,6 +22,16 @@ export default function Weather(props){
   });
  
 }
+function Position(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    let apiKey = "88bb6b7ed04faa186d338b9c9e0be6e6";
+    let apiGeoUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
+    axios.get(apiGeoUrl).then(handleResponse);
+  }
+
 function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -36,6 +46,9 @@ function handleSubmit(event) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
+   function currentPosition() {
+    navigator.geolocation.getCurrentPosition(Position);
+  }
 
 if (weatherData.ready){
 return (
@@ -44,8 +57,7 @@ return (
           <Forecast  coordinates={weatherData.coordinates} />
       <hr />
       <br />
-      <div className= "row">
-        <div className="col">
+      <div className= "mb-3">
       <form onSubmit= {handleSubmit}>
         <input 
         type="search" 
@@ -53,27 +65,25 @@ return (
         id="city-input" 
         autoFocus="on"
         onChange={handleCityChange}
-        />
-</form>
-</div>
-<div className="col">
-        <input 
+      />
+        <input 
         type="submit" 
         value="Search" 
-        className="rounded-pill btn-md" 
+        className="btn btn-secondary" 
         auto-complete="on"
-        />
-</div>
-<div className="col">
-        <input 
+       />
+        <input 
         type="button"
         value="My location"
-        className="rounded-pill btn-md"
+        className="btn btn-secondary"
         auto-complete="on"
-        />
-      </div>
-      </div>  
-     </div> 
+        onClick={currentPosition}
+       />
+</form>
+</div>     
+</div> 
+ 
+
     );
 }else{
 const apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";

@@ -3,10 +3,9 @@
     display: inline-block;
     text-align: center;
 }
-
-col {
-    background:transparent;
-    border-color:tomato;
-    color:turquoise;
-    transition: all 200ms ease-in-out;
+.mb-3 {
+    text-align:center;
 }
+
+
+
