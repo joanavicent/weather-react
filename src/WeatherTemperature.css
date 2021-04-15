@@ -1,9 +1,10 @@
-.WeatherTemperature .unit {
+.WeatherTemperature .unit{
 color: rgb(33, 33, 33);
 font-size: 16px;
 font-weight: 500;
 position:relative;
 top: -12px;
+}
+.WeatherTemperature .unit  a:hover{
 text-decoration:none;
 }
-

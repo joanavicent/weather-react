@@ -25,26 +25,26 @@ export default function WeatherInfo(props){
                 <div className="description text-capitalize text-center">
                   {props.data.description}
                 </div>
+                </div>
+                </div>
             <div className="col">
               <div className="float">
-                    <div className="text-center">
-                  <ul>
+                  <ul className="WeatherSpecification">
                     <li>
-                      <strong>Humidity:</strong> <span id="humidity">{props.data.humidity}</span>%{" "}
-                      
+                      <strong>Feels like:</strong> <span id="feelsLike">{props.data.feelsLike}</span>{" "}ºC 
                     </li>
                     <li>
-                      <strong>Wind speed:</strong> <span id="wind">{Math.round(props.data.wind)}</span>{" "}
+                      <strong>Humidity:</strong> <span id="humidity">{props.data.humidity}</span>{" "}%
+                    </li>
+                    <li>
+                      <strong>Wind Speed:</strong> <span id="wind">{Math.round(props.data.wind)}</span>{" "}
                       km/h 
                     </li>
                   </ul>
-                  </div>
-                </div>
-              </div>
+              
             </div> 
           </div>
         </div>
-       </div> 
-       
+       </div>  
     );
 }

@@ -12,6 +12,7 @@ export default function Weather(props){
   setWeatherData({
     ready:true,
     coordinates:response.data.coord,
+    feelsLike: Math.round(response.data.main.feels_like),
     temperature: response.data.main.temp,
     humidity:response.data.main.humidity,
     wind: response.data.wind.speed,
@@ -65,31 +66,36 @@ return (
         id="city-input" 
         autoFocus="on"
         onChange={handleCityChange}
+        className="form-control-sm rounded-pill"
       />
         <input 
         type="submit" 
         value="Search" 
-        className="btn btn-secondary" 
+        className="btn rounded-pill btn-secondary" 
         auto-complete="on"
        />
         <input 
         type="button"
         value="My location"
-        className="btn btn-secondary"
+        className="btn rounded-pill btn-secondary"
         auto-complete="on"
         onClick={currentPosition}
        />
 </form>
 </div>     
 </div> 
- 
-
     );
 }else{
 const apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";
   let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(handleResponse); 
 
-  return "Loading...";
+  return (
+  <div className="d-flex justify-content-center">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden"></span>
+  </div>
+</div>
+);
 }  
 }

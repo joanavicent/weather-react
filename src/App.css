@@ -40,13 +40,12 @@ button {
 }
 
 .container {
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: 6px 6px 6px rgb(0 0 0 / 10%);
-    width: 800px;
     padding: 10px;
     margin-top: 70px;
+    margin-bottom: 70px;
     border: 4px solid #7E8A97;
-
 }
 
 .col .d-flex .align-items-end {
@@ -83,9 +82,9 @@ button {
   
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .container {
-    width: 75%;
+    max-width: 970px;
     padding-right: 80px;
     padding-left: 80px;
     margin-right: auto;
