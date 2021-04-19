@@ -50,8 +50,9 @@ a {
     border: 3px solid #7E8A97;
 }
 
-@media (min-width:576px) {
+@media (min-width:768px) {
   .container {
     border: 3px solid #7E8A97;
   }
+  
 }

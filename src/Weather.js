@@ -21,8 +21,8 @@ export default function Weather(props){
     description:response.data.weather[0].description,
     icon:response.data.weather[0].icon 
   });
- 
 }
+
 function Position(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
@@ -66,7 +66,7 @@ return (
         id="city-input" 
         autoFocus="on"
         onChange={handleCityChange}
-        className="form-control-sm rounded-pill"
+        className="form-control-sm border-secondary rounded-pill"
       />
         <input 
         type="submit" 
@@ -86,7 +86,7 @@ return (
 </div> 
     );
 }else{
-const apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";
+  const apiKey="88bb6b7ed04faa186d338b9c9e0be6e6";
   let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(handleResponse); 
 

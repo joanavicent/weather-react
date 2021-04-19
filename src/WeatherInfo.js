@@ -41,7 +41,6 @@ export default function WeatherInfo(props){
                       km/h 
                     </li>
                   </ul>
-              
             </div> 
           </div>
         </div>
